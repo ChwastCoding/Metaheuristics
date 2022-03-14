@@ -6,12 +6,14 @@ set(sources
     setup_test.cpp
     ../src/tsp_data/Euc2DInstance.cpp
     ../src/tsp_data/TSPInstance.cpp
+    ../src/tsp_data/MatrixInstance.cpp
     ../src/tsp_data/Parser.cpp
     ../src/util.cpp
 )
 
 set(headers
      ../src/tsp_data/Euc2DInstance.h
+     ../src/tsp_data/MatrixInstance.h
      ../src/tsp_data/TSPInstance.h
     ../src/util.h
 )

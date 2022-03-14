@@ -24,7 +24,7 @@ std::pair<int, int> Euc2DInstance::getCoords(const int& i) const
 std::ostream& Euc2DInstance::format(std::ostream& out) const 
 {
     out << "NAME : " << name << "\n";
-    out << "TSP : TSP\n";
+    out << "TYPE : TSP\n";
     out << "DIMENSION : " << size << "\n";
     out << "EDGE_WEIGHT_TYPE: EUC_2D\n";
     out << "NODE_COORD_SECTION\n";

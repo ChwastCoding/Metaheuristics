@@ -4,8 +4,9 @@ namespace util
 {
     std::string trimWhitespace(const std::string& s)
     {
-        std::size_t i = s.size();
-        while (i && s[i - 1] == ' ') i--;
-        return s.substr(0, i);
+        auto copy = s.substr(s.find_first_not_of(" "));
+        std::size_t i = copy.size();
+        while (i && copy[i - 1] == ' ') i--;
+        return copy.substr(0, i);
     }   
 } // namespace util
