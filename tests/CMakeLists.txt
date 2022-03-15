@@ -8,6 +8,7 @@ set(sources
     ../src/tsp_data/TSPInstance.cpp
     ../src/tsp_data/MatrixInstance.cpp
     ../src/tsp_data/Parser.cpp
+    ../src/tsp_data/ProblemFactory.cpp
     ../src/util.cpp
 )
 
@@ -15,6 +16,7 @@ set(headers
      ../src/tsp_data/Euc2DInstance.h
      ../src/tsp_data/MatrixInstance.h
      ../src/tsp_data/TSPInstance.h
+     ../src/tsp_data/ProblemFactory.h
     ../src/util.h
 )
 

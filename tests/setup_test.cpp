@@ -3,12 +3,15 @@
 #include "../src/tsp_data/MatrixInstance.h"
 #include "../src/tsp_data/Parser.h"
 #include "../src/util.h"
+#include "../src/tsp_data/ProblemFactory.h"
 
 typedef std::pair<int, int> intPair;
 const std::string pathToOriginalEuclidian = "../../tests/ch130.tsp";
 const std::string pathToCopyEuclidian = "ch130_copy.tsp";
 const std::string pathToOriginalMatrix = "../../tests/br17.atsp";
 const std::string pathToCopyMatrix = "br17_copy.atsp";
+const std::string pathToRandomEuclid = "random_euclid.tsp";
+const std::string pathToRandomMatrix = "random_matrix.atsp";
 
 
 TEST(setup_test, test_1) {
@@ -65,6 +68,16 @@ TEST(parser_test, saving_matrix) {
     }
 }
 
+TEST(problem_factory, create_euclid) {
+    auto instance = ProblemFactory::createEuc2DInstance(100, 20);
+    ASSERT_NO_THROW(Parser::saveInstance(instance, pathToRandomEuclid));
+}
+
+
+TEST(problem_factory, create_matrix) {
+    auto instance = ProblemFactory::createMatrixInstance(100, 20);
+    ASSERT_NO_THROW(Parser::saveInstance(instance, pathToRandomMatrix));
+}
 
 int main(int argc, char** argv)
 {
