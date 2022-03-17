@@ -5,7 +5,18 @@
 #include <memory>
 
 class Solver {
-    virtual TSPInstance::solution solve(std::shared_ptr<TSPInstance> instance) = 0;
+protected:
+    std::shared_ptr<TSPInstance> instance;
+    TSPInstance::solution solution;
+
+    void setupInitialSolution();
+public:
+    Solver(std::shared_ptr<TSPInstance> instance);
+
+    virtual void step() = 0;
+
+    TSPInstance::solution getSolution();
+    int calculateObjectiveFunction();
 };
 
 #endif // __SOLVER_H__

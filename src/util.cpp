@@ -1,5 +1,6 @@
 #include "util.h"
 #include <algorithm>
+#include <sstream>
 
 namespace util
 {
@@ -24,5 +25,5 @@ namespace util
     bool cmdOptionExists(int argc, char** argv, const std::string& option)
     {
         return std::find(argv, argc + argv, option) != argc + argv;
-    }   
+    }
 } // namespace util

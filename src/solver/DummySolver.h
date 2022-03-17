@@ -2,12 +2,13 @@
 #define __DUMMYSOLVER_H__
 
 #include "Solver.h"
+#include <chrono>
 
 class DummySolver : public Solver {
-private:
-    TSPInstance::solution cachedSolution;
+    std::chrono::time_point<std::chrono::high_resolution_clock> previous, current;
 public:
-    TSPInstance::solution solve(std::shared_ptr<TSPInstance> instance) override;
+    DummySolver(std::shared_ptr<TSPInstance> instance);
+    void step() override;
 };
 
 #endif // __DUMMYSOLVER_H__
