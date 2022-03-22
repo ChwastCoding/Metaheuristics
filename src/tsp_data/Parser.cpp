@@ -15,8 +15,9 @@ std::shared_ptr<TSPInstance> Parser::getInstance(const std::string& path) {
         std::cout << "Opened file" << std::endl;
         std::string line, name;
         std::shared_ptr<TSPInstance> instance;
-        bool symetric;
+        bool symetric, isDiagonal;
         int size;
+        MatrixInstance::MatrixType type = MatrixInstance::MatrixType::UNDEFINED;
 
         while (getline(file, line)){
             auto colon_index = line.find(':');
@@ -34,9 +35,19 @@ std::shared_ptr<TSPInstance> Parser::getInstance(const std::string& path) {
                 size = std::stoi(value);
             } else if (keyword == "EDGE_WEIGHT_FORMAT") {
                 auto format = value; // line.substr(colon_index + 2);
-                std::cout << "FORMAT " << format << std::endl;
-                if (format != "FULL_MATRIX") 
-                    throw std::runtime_error(unsuppoartedProblemMessage);
+                if (format == "FULL_MATRIX") type = MatrixInstance::MatrixType::FULL;
+                else if (format == "UPPER_ROW") type = MatrixInstance::MatrixType::UPPER_ROW;
+                else if (format == "LOWER_ROW") type = MatrixInstance::MatrixType::LOWER_ROW;
+                else if (format == "UPPER_DIAG_ROW") type = MatrixInstance::MatrixType::UPPER_DIAG_ROW;
+                else if (format == "LOWER_DIAG ROW") type = MatrixInstance::MatrixType::LOWER_DIAG_ROW;
+                else if (format == "UPPER_COL") type = MatrixInstance::MatrixType::UPPER_COL;
+                else if (format == "LOWER_COL") type = MatrixInstance::MatrixType::LOWER_COL;
+                else if (format == "UPPER_DIAG_COL") type = MatrixInstance::MatrixType::UPPER_DIAG_COL;
+                else if (format == "LOWER_DIAG_COL") type = MatrixInstance::MatrixType::FULL;
+                else 
+                    throw std::runtime_error("Unsupported matrix type");
+                isDiagonal = (type >= MatrixInstance::MatrixType::UPPER_DIAG_ROW);
+
             } else if (keyword == "NODE_COORD_SECTION") {
                 std::vector<std::pair<int, int>> coords(size);
                 for (int i = 0; i < size; i ++) {
@@ -53,16 +64,55 @@ std::shared_ptr<TSPInstance> Parser::getInstance(const std::string& path) {
                 tsp->setName(name); 
                 instance = tsp;
             } else if (keyword == "EDGE_WEIGHT_SECTION") {
-                std::vector<std::vector<int>> matrix(size, std::vector<int>(size));
-                for (int i = 0; i < size; i++ ){
-                    for (int j = 0; j < size; j ++) {
-                        file >> matrix[i][j];
-                    }
-                }
-                getline(file, line);
+                if (type == MatrixInstance::MatrixType::UNDEFINED)
+                    throw std::runtime_error("Did not set Matrix type");
+                
                 auto tsp = std::make_shared<MatrixInstance>(size);
-                tsp->setMatrix(matrix);
                 tsp->setName(name);
+                
+                if (type == MatrixInstance::MatrixType::FULL){
+                    std::vector<std::vector<int>> matrix(size, std::vector<int>(size));
+                    for (int i = 0; i < size; i++ ){
+                        for (int j = 0; j < size; j ++) {
+                            file >> matrix[i][j];
+                        }
+                    }
+                    getline(file, line);
+                    tsp->setMatrix(matrix);
+                    tsp->setType(MatrixInstance::MatrixType::FULL);
+                    tsp->setIsSymetric(symetric);
+                } else {
+                    if (type == MatrixInstance::MatrixType::UNDEFINED || !symetric)
+                        throw std::runtime_error(unsuppoartedProblemMessage);
+
+                    std::vector<std::vector<int>> matrix(size);
+                    for (int i = 0; i < size; i ++)
+                        matrix[i] = std::vector<int>(size - i);
+                    
+                    std::cout << "is diagonal: " << isDiagonal << std::endl;
+
+                    if (type == MatrixInstance::MatrixType::UPPER_ROW ||
+                        type == MatrixInstance::MatrixType::UPPER_DIAG_ROW ||
+                        type == MatrixInstance::MatrixInstance::LOWER_COL ||
+                        type == MatrixInstance::MatrixInstance::LOWER_DIAG_COL) {
+                        for (int i = 0; i < size; i ++) {
+                            int j = 0;
+                            if (!isDiagonal) matrix[i][j ++] = MatrixInstance::infty;
+                            while (j < size - i) file >> matrix[i][j ++];
+                        }
+                    } else {
+                        for (int i = 0; i < size; i ++) {
+                            int j = 0;
+                            if (!isDiagonal) matrix[j ++][i] = MatrixInstance::infty;
+                            while (j < size - i) file >> matrix[j ++][i];
+                        }
+                    }
+
+                    tsp->setType(MatrixInstance::MatrixType::UPPER_DIAG_ROW);
+                    tsp->setMatrix(matrix);
+                    tsp->setIsSymetric(true);
+                    getline(file, line);
+                }
                 instance = tsp;
             }  
         }

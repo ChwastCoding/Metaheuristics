@@ -9,6 +9,8 @@ typedef std::pair<int, int> intPair;
 const std::string pathToOriginalEuclidian = "../../tests/ch130.tsp";
 const std::string pathToCopyEuclidian = "ch130_copy.tsp";
 const std::string pathToOriginalMatrix = "../../tests/br17.atsp";
+const std::string pathToBrg180 = "../../tests/brg180.tsp";
+const std::string pathToBrg180Copy = "brg180_copy.tsp";
 const std::string pathToCopyMatrix = "br17_copy.atsp";
 const std::string pathToRandomEuclid = "random_euclid.tsp";
 const std::string pathToRandomMatrix = "random_matrix.atsp";
@@ -66,6 +68,17 @@ TEST(parser_test, saving_matrix) {
             ASSERT_EQ(instance->getCost(i, j), instance_copy->getCost(i, j));
         }
     }
+}
+
+TEST(parset_test, loading_upper_row) {
+    std::shared_ptr<TSPInstance> instance;
+    int infty = MatrixInstance::infty;
+
+    ASSERT_NO_THROW(instance = Parser::getInstance(pathToBrg180));
+    ASSERT_NO_THROW(Parser::saveInstance(instance, pathToBrg180Copy));
+    ASSERT_EQ(instance->getCost(0, 1), 20);
+    ASSERT_EQ(instance->getCost(1, 1), infty);
+    ASSERT_EQ(instance->getCost(1, 3), 10000);
 }
 
 TEST(problem_factory, create_euclid) {
