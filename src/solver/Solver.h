@@ -13,7 +13,7 @@ protected:
 public:
     Solver(std::shared_ptr<TSPInstance> instance);
 
-    virtual void step() = 0;
+    virtual bool step() = 0;
 
     TSPInstance::solution getSolution();
     int calculateObjectiveFunction();

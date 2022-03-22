@@ -24,17 +24,16 @@ std::shared_ptr<TSPInstance> Parser::getInstance(const std::string& path) {
             std::string keyword = util::trimWhitespace(line.substr(0, colon_index));
             auto value = util::trimWhitespace(line.substr(colon_index + 1));
             if (keyword == "NAME") {
-                name = value; // line.substr(colon_index + 2);
+                name = value;
             } else if (keyword == "TYPE") {
-                auto type = value; // line.substr(colon_index + 2);
-                std::cout << "TYPE " << type << std::endl;
+                auto type = value;
                 if (type != "TSP" && type != "ATSP")
                     throw std::runtime_error(unsuppoartedProblemMessage);
                 symetric = (type == "TSP");
             } else if (keyword == "DIMENSION") {
                 size = std::stoi(value);
             } else if (keyword == "EDGE_WEIGHT_FORMAT") {
-                auto format = value; // line.substr(colon_index + 2);
+                auto format = value;
                 if (format == "FULL_MATRIX") type = MatrixInstance::MatrixType::FULL;
                 else if (format == "UPPER_ROW") type = MatrixInstance::MatrixType::UPPER_ROW;
                 else if (format == "LOWER_ROW") type = MatrixInstance::MatrixType::LOWER_ROW;
@@ -89,8 +88,6 @@ std::shared_ptr<TSPInstance> Parser::getInstance(const std::string& path) {
                     for (int i = 0; i < size; i ++)
                         matrix[i] = std::vector<int>(size - i);
                     
-                    std::cout << "is diagonal: " << isDiagonal << std::endl;
-
                     if (type == MatrixInstance::MatrixType::UPPER_ROW ||
                         type == MatrixInstance::MatrixType::UPPER_DIAG_ROW ||
                         type == MatrixInstance::MatrixInstance::LOWER_COL ||
