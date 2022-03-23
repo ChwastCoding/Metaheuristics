@@ -16,6 +16,7 @@ public:
     virtual bool step() = 0;
 
     TSPInstance::solution getSolution();
+    int calculateObjectiveFunction(TSPInstance::solution solution);
     int calculateObjectiveFunction();
 };
 
