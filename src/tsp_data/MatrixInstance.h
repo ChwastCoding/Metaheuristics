@@ -8,7 +8,6 @@ class MatrixInstance : public TSPInstance {
     std::ostream& format(std::ostream& out) const override;
 
     std::vector<std::vector<int>> matrix;
-    bool isSymetric;
 public:
     static const int infty = 9999;
 

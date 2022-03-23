@@ -9,6 +9,7 @@ set (headers
     src/util.h
     src/solver/Solver.h
     src/solver/DummySolver.h
+    src/solver/TwoOptSolver.h
     src/visualization/Visualization.h
     src/tsp_data/Euc2DInstance.h
     src/tsp_data/MatrixInstance.h
@@ -20,6 +21,7 @@ set (sources
     src/util.cpp
     src/solver/Solver.cpp
     src/solver/DummySolver.cpp
+    src/solver/TwoOptSolver.cpp
     src/visualization/Visualization.cpp
     src/main.cpp
     src/tsp_data/Euc2DInstance.cpp

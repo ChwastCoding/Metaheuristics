@@ -18,3 +18,13 @@ int TSPInstance::getSize() const
 {
     return size;
 }
+
+bool TSPInstance::getIsSymetric() const
+{
+    return isSymetric;
+}
+
+void TSPInstance::setIsSymetric(bool s)
+{
+    isSymetric = s;
+}

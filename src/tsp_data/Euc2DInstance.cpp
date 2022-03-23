@@ -19,8 +19,6 @@ std::pair<int, int> Euc2DInstance::getCoords(const int& i) const
     return coords[i];
 }
 
-// Euc2DInstance::Euc2DInstance(int size) : TSPInstance(size) {}
-
 std::ostream& Euc2DInstance::format(std::ostream& out) const 
 {
     out << "NAME : " << name << "\n";
@@ -35,4 +33,6 @@ std::ostream& Euc2DInstance::format(std::ostream& out) const
     return out;
 }
 
-Euc2DInstance::Euc2DInstance(int size) : TSPInstance(size) {}
+Euc2DInstance::Euc2DInstance(int size) : TSPInstance(size) {
+    isSymetric = true;
+}

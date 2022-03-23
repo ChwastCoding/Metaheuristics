@@ -18,12 +18,14 @@ private:
     std::vector<sf::Vector2f> positions;
     
     sf::Vector2f toWindowSpace(const std::pair<int, int>& pair);
+    sf::Font font;
 
+    const static std::string pathToFont;
 public:
     Visualization(int width = 1024, int height = 768, const std::string& title = "Visualization");
 
     bool isOpen();
-    void draw();
+    void draw(int distance);
     void setSolution(const TSPInstance::solution& solution);
     void setInstance(std::shared_ptr<Euc2DInstance> instance, int fieldSize);
 };

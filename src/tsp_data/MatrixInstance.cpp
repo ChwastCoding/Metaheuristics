@@ -12,11 +12,6 @@ void MatrixInstance::setType(MatrixType type)
     this->matrixType = type;
 }
 
-void MatrixInstance::setIsSymetric(bool s)
-{
-    isSymetric = s;
-}
-
 int MatrixInstance::getCost(const int& a, const int& b)
 {
     if (matrixType == MatrixType::FULL) return matrix[a][b];
