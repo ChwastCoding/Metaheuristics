@@ -30,7 +30,7 @@ void Visualization::draw()
         window.draw(verteceis, 2, sf::Lines);
     }
 
-    sf::Vertex verteceis[] = { positions[solution[positions.size() - 1]], positions[solution[0]] };
+    sf::Vertex verteceis[] = { positions[solution[solution.size() - 1]], positions[solution[0]] };
     window.draw(verteceis, 2, sf::Lines);
 
     circle.setFillColor(sf::Color::Red);

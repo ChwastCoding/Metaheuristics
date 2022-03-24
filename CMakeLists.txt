@@ -31,7 +31,11 @@ set (sources
     src/tsp_data/ProblemFactory.cpp
          src/solver/K_RandomSolver.cpp src/solver/NearestNeighbour.cpp src/solver/ExtNearestNeighbour.cpp )
 
-find_package(SFML 2 COMPONENTS graphics window audio REQUIRED HINTS "${CMAKE_CURRENT_SOURCE_DIR}/lib/cmake/SFML")
+if(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
+    find_package(SFML 2 COMPONENTS graphics window audio REQUIRED HINTS "${CMAKE_CURRENT_SOURCE_DIR}/lib_mingw/cmake/SFML")
+elseif(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+    find_package(SFML 2 COMPONENTS graphics window audio REQUIRED HINTS "${CMAKE_CURRENT_SOURCE_DIR}/lib_gcc/cmake/SFML")
+endif()
 
 add_executable(${PROJECT_NAME} ${headers} ${sources})
 target_link_libraries(${PROJECT_NAME} sfml-graphics sfml-window sfml-audio)
