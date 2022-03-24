@@ -13,10 +13,10 @@ class K_RandomSolver : public Solver{
         std::default_random_engine rng;
         TSPInstance::solution currSolution;
     public:
-        K_RandomSolver(std::shared_ptr<TSPInstance> instance, int k);
         bool step() override;
         void setSolution(const TSPInstance::solution& solution);
         void setupInitialCurrSolution();
+        K_RandomSolver(std::shared_ptr<TSPInstance> instance, int k);
 
 
 

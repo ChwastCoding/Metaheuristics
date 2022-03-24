@@ -25,5 +25,5 @@ int Solver::calculateObjectiveFunction(TSPInstance::solution s)
 
 int Solver::calculateObjectiveFunction()
 {
-    return Solver::calculateObjectiveFunction(solution);
+    return calculateObjectiveFunction(solution);
 }

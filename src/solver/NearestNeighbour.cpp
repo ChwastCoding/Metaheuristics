@@ -9,6 +9,7 @@ NearestNeighbour::NearestNeighbour(std::shared_ptr<TSPInstance> instance, int st
     setupUnvisitedNodes();
     solution.push_back(startingPoint);
     std::remove(unvisited.begin(), unvisited.end(), startingPoint);
+    unvisited.pop_back();
 }
 
 void NearestNeighbour::setupUnvisitedNodes() {
@@ -20,13 +21,10 @@ void NearestNeighbour::setupUnvisitedNodes() {
 
 bool NearestNeighbour::step() {
     if(unvisited.empty()) return false;
-    if (std::chrono::duration_cast<std::chrono::milliseconds>(current - previous).count() > 100) {
-        previous = current;
-        int nearestNeighbour = getNearestNeighbour();
-        solution.push_back(nearestNeighbour);
-        std::remove(unvisited.begin(), unvisited.end(), nearestNeighbour);
-    }
-    current = std::chrono::high_resolution_clock::now();
+    int nearestNeighbour = getNearestNeighbour();
+    solution.push_back(nearestNeighbour);
+    std::remove(unvisited.begin(), unvisited.end(), nearestNeighbour);
+    unvisited.pop_back();
     return true;
 }
 

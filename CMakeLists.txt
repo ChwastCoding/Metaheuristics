@@ -14,6 +14,9 @@ set (headers
     src/tsp_data/MatrixInstance.h
     src/tsp_data/TSPInstance.h
     src/tsp_data/ProblemFactory.h
+        src/solver/NearestNeighbour.h
+        src/solver/K_RandomSolver.h
+        src/solver/ExtNearestNeighbour.h
 )
 
 set (sources
@@ -26,7 +29,7 @@ set (sources
     src/tsp_data/MatrixInstance.cpp
     src/tsp_data/TSPInstance.cpp
     src/tsp_data/ProblemFactory.cpp
-        src/solver/K_RandomSolver.h src/solver/K_RandomSolver.cpp src/solver/NearestNeighbour.cpp src/solver/NearestNeighbour.h src/solver/ExtNearestNeighbour.cpp src/solver/ExtNearestNeighbour.h)
+         src/solver/K_RandomSolver.cpp src/solver/NearestNeighbour.cpp src/solver/ExtNearestNeighbour.cpp )
 
 find_package(SFML 2 COMPONENTS graphics window audio REQUIRED HINTS "${CMAKE_CURRENT_SOURCE_DIR}/lib/cmake/SFML")
 

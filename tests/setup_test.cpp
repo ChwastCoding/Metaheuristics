@@ -4,6 +4,9 @@
 #include "../src/tsp_data/Parser.h"
 #include "../src/util.h"
 #include "../src/tsp_data/ProblemFactory.h"
+#include "../src/solver/K_RandomSolver.h"
+#include "../src/solver/NearestNeighbour.h"
+#include "../src/solver/ExtNearestNeighbour.h"
 
 typedef std::pair<int, int> intPair;
 const std::string pathToOriginalEuclidian = "../../tests/ch130.tsp";
@@ -90,6 +93,43 @@ TEST(problem_factory, create_euclid) {
 TEST(problem_factory, create_matrix) {
     auto instance = ProblemFactory::createMatrixInstance(100, 20);
     ASSERT_NO_THROW(Parser::saveInstance(instance, pathToRandomMatrix));
+}
+
+TEST(k_random_solver, solve){
+    std::shared_ptr<TSPInstance> instance;
+    ASSERT_NO_THROW(instance = Parser::getInstance(pathToOriginalEuclidian));
+    K_RandomSolver kRandomSolver(instance, 1000);
+    while(kRandomSolver.step()){}
+    ASSERT_TRUE(kRandomSolver.getSolution().size() == instance->getSize());
+    TSPInstance::solution s;
+    s.resize(instance->getSize());
+    std::iota(s.begin(), s.end(), 0);
+    ASSERT_FALSE(kRandomSolver.getSolution() == s);
+    for(int i = 0; i < kRandomSolver.getSolution().size(); i++){
+        ASSERT_TRUE(std::find(kRandomSolver.getSolution().begin(), kRandomSolver.getSolution().end(), i) != kRandomSolver.getSolution().end());
+    }
+}
+
+TEST(nearest_neighbour_solver, solve){
+    std::shared_ptr<TSPInstance> instance;
+    ASSERT_NO_THROW(instance = Parser::getInstance(pathToOriginalEuclidian));
+    NearestNeighbour nn(instance, 1);
+    while(nn.step()){}
+    ASSERT_TRUE(nn.getSolution().size() == instance->getSize());
+    for(int i = 0; i < nn.getSolution().size(); i++){
+        ASSERT_TRUE(std::find(nn.getSolution().begin(), nn.getSolution().end(), i) != nn.getSolution().end());
+    }
+}
+
+TEST(ext_nearest_neighbour_solver, solve){
+    std::shared_ptr<TSPInstance> instance;
+    ASSERT_NO_THROW(instance = Parser::getInstance(pathToOriginalEuclidian));
+    ExtNearestNeighbour extNearestNeighbour(instance);
+    while(extNearestNeighbour.step());
+    ASSERT_TRUE(extNearestNeighbour.getSolution().size() == instance->getSize());
+    for(int i = 0; i < extNearestNeighbour.getSolution().size(); i++){
+        ASSERT_TRUE(std::find(extNearestNeighbour.getSolution().begin(), extNearestNeighbour.getSolution().end(), i) != extNearestNeighbour.getSolution().end());
+    }
 }
 
 int main(int argc, char** argv)

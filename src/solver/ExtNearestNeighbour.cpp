@@ -9,11 +9,15 @@ ExtNearestNeighbour::ExtNearestNeighbour(std::shared_ptr<TSPInstance> instance) 
     k = 0;
 }
 
+void ExtNearestNeighbour::setSolution(const TSPInstance::solution &solution) {
+    this->solution = solution;
+}
+
 bool ExtNearestNeighbour::step() {
     if(k >= instance->getSize()) return false;
     NearestNeighbour nn(instance, k);
     nn.iterate();
-    if(calculateObjectiveFunction(nn.getSolution()) <= calculateObjectiveFunction(solution)) solution = nn.getSolution();
+    if(calculateObjectiveFunction(nn.getSolution()) <= calculateObjectiveFunction(solution)) setSolution(nn.getSolution());
     k++;
     return true;
 }

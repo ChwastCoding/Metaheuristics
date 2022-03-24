@@ -12,6 +12,7 @@ class ExtNearestNeighbour : public Solver{
     public:
         explicit ExtNearestNeighbour(std::shared_ptr<TSPInstance> instance);
         bool step() override;
+        void setSolution(const TSPInstance::solution& solution);
 
 };
 
