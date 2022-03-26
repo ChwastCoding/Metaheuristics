@@ -10,20 +10,13 @@ bool K_RandomSolver::step(){
     return true;
 }
 
-void K_RandomSolver::setupInitialCurrSolution()
-{
-    currSolution.resize(instance->getSize());
-    std::iota(currSolution.begin(), currSolution.end(), 0);
-}
-
 void K_RandomSolver::setSolution(const TSPInstance::solution &solution) {
     this->solution = solution;
 }
 
-K_RandomSolver::K_RandomSolver(std::shared_ptr<TSPInstance> instance, int k) : Solver(instance){
-    Solver::setupInitialSolution();
-    setupInitialCurrSolution();
-    previous = current = std::chrono::high_resolution_clock::now();
+K_RandomSolver::K_RandomSolver(const std::shared_ptr<TSPInstance>& instance, int k) : Solver(instance), currSolution(instance->getSize()){
+    setupInitialSolution();
+    std::iota(currSolution.begin(), currSolution.end(), 0);
     rng.seed(std::chrono::system_clock::now().time_since_epoch().count());
     this->k = k;
 }

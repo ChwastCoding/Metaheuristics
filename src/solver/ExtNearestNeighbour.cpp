@@ -2,9 +2,8 @@
 
 #include "ExtNearestNeighbour.h"
 
-#include <utility>
 
-ExtNearestNeighbour::ExtNearestNeighbour(std::shared_ptr<TSPInstance> instance) : Solver(std::move(instance)) {
+ExtNearestNeighbour::ExtNearestNeighbour(const std::shared_ptr<TSPInstance>& instance) : Solver(instance) {
     setupInitialSolution();
     k = 0;
 }
@@ -16,7 +15,7 @@ void ExtNearestNeighbour::setSolution(const TSPInstance::solution &solution) {
 bool ExtNearestNeighbour::step() {
     if(k >= instance->getSize()) return false;
     NearestNeighbour nn(instance, k);
-    nn.iterate();
+    while(nn.step());
     if(calculateObjectiveFunction(nn.getSolution()) <= calculateObjectiveFunction(solution)) setSolution(nn.getSolution());
     k++;
     return true;

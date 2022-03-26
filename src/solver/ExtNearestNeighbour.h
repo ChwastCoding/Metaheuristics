@@ -10,7 +10,7 @@ class ExtNearestNeighbour : public Solver{
     protected:
         int k;
     public:
-        explicit ExtNearestNeighbour(std::shared_ptr<TSPInstance> instance);
+        ExtNearestNeighbour(const std::shared_ptr<TSPInstance> &instance);
         bool step() override;
         void setSolution(const TSPInstance::solution& solution);
 

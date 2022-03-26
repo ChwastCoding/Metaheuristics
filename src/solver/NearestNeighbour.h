@@ -7,17 +7,13 @@
 
 class NearestNeighbour : public Solver{
     protected:
-        std::chrono::time_point<std::chrono::high_resolution_clock> previous, current;
         std::vector<int> unvisited;
         int startingPoint;
 
     public:
-        NearestNeighbour(std::shared_ptr<TSPInstance> instance, int startingPoint);
+        NearestNeighbour(const std::shared_ptr<TSPInstance>& instance, int startingPoint);
         bool step() override;
-        void setupUnvisitedNodes();
-        void iterate();
-
-    int getNearestNeighbour();
+        int getNearestNeighbour();
 };
 
 

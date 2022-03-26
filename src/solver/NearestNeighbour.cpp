@@ -2,22 +2,15 @@
 #include "NearestNeighbour.h"
 #include <bits/stdc++.h>
 
-#include <utility>
 
-NearestNeighbour::NearestNeighbour(std::shared_ptr<TSPInstance> instance, int startingPoint) : Solver(std::move(instance)) {
+NearestNeighbour::NearestNeighbour(const std::shared_ptr<TSPInstance>& instance, int startingPoint) : Solver(instance), unvisited(instance->getSize()) {
     this->startingPoint = startingPoint;
-    setupUnvisitedNodes();
+    std::iota(unvisited.begin(),unvisited.end(), 0);
     solution.push_back(startingPoint);
     std::remove(unvisited.begin(), unvisited.end(), startingPoint);
     unvisited.pop_back();
 }
 
-void NearestNeighbour::setupUnvisitedNodes() {
-    unvisited.resize(instance->getSize());
-    for(int i = 0; i < instance->getSize(); i++){
-        unvisited[i] = i;
-    }
-}
 
 bool NearestNeighbour::step() {
     if(unvisited.empty()) return false;
@@ -39,8 +32,4 @@ int NearestNeighbour::getNearestNeighbour(){
         }
     }
     return nearestNeighbour;
-}
-
-void  NearestNeighbour::iterate() {
-    while(step());
 }
