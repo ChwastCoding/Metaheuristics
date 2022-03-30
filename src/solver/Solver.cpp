@@ -14,10 +14,16 @@ TSPInstance::solution Solver::getSolution()
     return solution;
 }
 
-int Solver::calculateObjectiveFunction()
+int Solver::calculateObjectiveFunction(const TSPInstance::solution& s)
 {
     int sum = 0;
-    for (int i = 1; i < solution.size(); i++)
-        sum += instance->getCost(i - 1, i);
-    return sum += instance->getCost(solution.size() - 1, 0);
+    for (int i = 1; i < s.size(); i++)
+        sum += instance->getCost(s[i - 1], s[i]);
+    sum += instance->getCost(s[s.size() - 1], s[0]);
+    return sum;
+}
+
+int Solver::calculateObjectiveFunction()
+{
+    return calculateObjectiveFunction(solution);
 }

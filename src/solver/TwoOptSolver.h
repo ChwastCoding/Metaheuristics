@@ -7,10 +7,6 @@ class TwoOptSolver : public Solver {
 private:
     int currentObjective;
 
-    int calculateObjective(const TSPInstance::solution& s);
-    // int safeCost(const std::vector<std::vector<int>>& differences, int a, int b);
-    // int safeCost_old(const TSPInstance::solution& s, int a, int b);
-
     bool symetricNaiveStep();
     bool symetricLookUpStep();
     bool symetricRunTimeStep();

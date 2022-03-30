@@ -10,6 +10,7 @@ set(sources
     ../src/tsp_data/Parser.cpp
     ../src/tsp_data/ProblemFactory.cpp
     ../src/util.cpp
+        ../src/solver/K_RandomSolver.cpp ../src/solver/NearestNeighbour.cpp ../src/solver/ExtNearestNeighbour.cpp ../src/solver/Solver.cpp
 )
 
 set(headers
@@ -18,6 +19,10 @@ set(headers
      ../src/tsp_data/TSPInstance.h
      ../src/tsp_data/ProblemFactory.h
     ../src/util.h
+        ../src/solver/NearestNeighbour.h
+        ../src/solver/K_RandomSolver.h
+        ../src/solver/ExtNearestNeighbour.h
+        ../src/solver/Solver.h
 )
 
 add_executable(${testname} ${sources} ${headers})

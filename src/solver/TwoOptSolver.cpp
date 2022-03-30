@@ -7,7 +7,7 @@
 TwoOptSolver::TwoOptSolver(std::shared_ptr<TSPInstance> instance, Mode mode_)
 : Solver(instance), mode(mode_) {
     setupInitialSolution();
-    currentObjective = calculateObjective(solution);
+    currentObjective = Solver::calculateObjectiveFunction(solution);
 
     size = solution.size();
     if (mode == Mode::LOOK_UP) {
@@ -37,22 +37,13 @@ int TwoOptSolver::calculateObjectiveFunction()
     return currentObjective;
 }
 
-int TwoOptSolver::calculateObjective(const TSPInstance::solution& s)
-{
-    int sum = 0;
-    for (int i = 0; i < s.size() - 1; i++)
-        sum += instance->getCost(s[i], s[i + 1]);
-    sum += instance->getCost(s[solution.size() - 1], s[0]);
-    return sum;
-}
-
 bool TwoOptSolver::symetricNaiveStep()
 {
     for (int i = 0; i < size; i++) {
         for (int j = i + 1; j < size && !(i == 0 && j == size - 1); j ++) {
             auto copy = TSPInstance::solution(solution.begin(), solution.end());
             std::reverse(copy.begin() + i, copy.begin() + j + 1);
-            int res = calculateObjective(copy);
+            int res = Solver::calculateObjectiveFunction(copy);
 
             if (res < currentObjective) {
                 solution = copy;
@@ -105,7 +96,7 @@ bool TwoOptSolver::asymetricStep()
             if (i < j) std::reverse(copy.begin() + i, copy.begin() + j + 1);
             else outerRotation(copy, i, j);
 
-            int res = calculateObjective(copy);
+            int res = Solver::calculateObjectiveFunction(copy);
             if (res < currentObjective) {
                 currentObjective = res;
                 solution = copy;
