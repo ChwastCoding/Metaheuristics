@@ -1,0 +1,10 @@
+Najważniejsze, czyli KRandom_quality:
+Przeprowadzone dla instancji ch130.tsp, a dla każdego rozmiaru problemu n wyciągano
+średnią z floor(0,03n + 10) powtórzeń algorytmu, i zastosowano na osi x skalę logarytmiczną
+
+Inne testy (podobne do Twoich, ale może skorzystasz) to:
+- bez dopiski 2 - porównywananie algorytmów dla 1000 instacji generowanych losowo tego samego rozmiaru, wraz z
+liczeniem testu Wilcoxona
+- z dopiską 2 - to samo, ale dla rozmiarów instacji rosnących od 10 do 210 (w przeciwieństwie do poprzedniego testu,
+3 eksperymenty są wykonane dla tych samych instacji), dla jednego powtórzenia algorytmu. Na dole jest wykres porównujący
+dany algorytm do najlepszego (w tym wypadku jest to rozszerzony najbliższy sąsiad)
