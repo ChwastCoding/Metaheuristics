@@ -1,0 +1,326 @@
+{
+  "tests/problems/a280.tsp": {
+    "kRandom": 2786.0,
+    "optimal": 2579
+  },
+  "tests/problems/berlin52.tsp": {
+    "kRandom": 22186.0,
+    "optimal": 7542
+  },
+  "tests/problems/bier127.tsp": {
+    "kRandom": 393942.0,
+    "optimal": 118282
+  },
+  "tests/problems/br17.atsp": {
+    "kRandom": 140.0,
+    "optimal": 39
+  },
+  "tests/problems/brazil58.tsp": {
+    "kRandom": 109615.0,
+    "optimal": 25395
+  },
+  "tests/problems/brg180.tsp": {
+    "kRandom": 118860.0,
+    "optimal": 1950
+  },
+  "tests/problems/ch130.tsp": {
+    "kRandom": 43189.0,
+    "optimal": 6110
+  },
+  "tests/problems/ch150.tsp": {
+    "kRandom": 48723.0,
+    "optimal": 6528
+  },
+  "tests/problems/d198.tsp": {
+    "kRandom": 22499.0,
+    "optimal": 15780
+  },
+  "tests/problems/d493.tsp": {
+    "kRandom": 113478.0,
+    "optimal": 35002
+  },
+  "tests/problems/d657.tsp": {
+    "kRandom": 232016.0,
+    "optimal": 48912
+  },
+  "tests/problems/eil101.tsp": {
+    "kRandom": 2031.0,
+    "optimal": 629
+  },
+  "tests/problems/eil51.tsp": {
+    "kRandom": 1294.0,
+    "optimal": 426
+  },
+  "tests/problems/eil76.tsp": {
+    "kRandom": 1951.0,
+    "optimal": 538
+  },
+  "tests/problems/fl417.tsp": {
+    "kRandom": 55302.0,
+    "optimal": 11861
+  },
+  "tests/problems/fri26.tsp": {
+    "kRandom": 1610.0,
+    "optimal": 937
+  },
+  "tests/problems/ft53.atsp": {
+    "kRandom": 13954.0,
+    "optimal": 6905
+  },
+  "tests/problems/ft70.atsp": {
+    "kRandom": 56081.0,
+    "optimal": 38673
+  },
+  "tests/problems/ftv170.atsp": {
+    "kRandom": 7146.0,
+    "optimal": 2755
+  },
+  "tests/problems/ftv33.atsp": {
+    "kRandom": 2239.0,
+    "optimal": 1286
+  },
+  "tests/problems/ftv35.atsp": {
+    "kRandom": 2473.0,
+    "optimal": 1473
+  },
+  "tests/problems/ftv38.atsp": {
+    "kRandom": 2504.0,
+    "optimal": 1530
+  },
+  "tests/problems/ftv44.atsp": {
+    "kRandom": 2678.0,
+    "optimal": 1613
+  },
+  "tests/problems/ftv47.atsp": {
+    "kRandom": 4289.0,
+    "optimal": 1776
+  },
+  "tests/problems/ftv55.atsp": {
+    "kRandom": 3974.0,
+    "optimal": 1608
+  },
+  "tests/problems/ftv64.atsp": {
+    "kRandom": 4783.0,
+    "optimal": 1839
+  },
+  "tests/problems/ftv70.atsp": {
+    "kRandom": 4855.0,
+    "optimal": 1950
+  },
+  "tests/problems/gil262.tsp": {
+    "kRandom": 25355.0,
+    "optimal": 2378
+  },
+  "tests/problems/gr120.tsp": {
+    "kRandom": 48622.0,
+    "optimal": 6942
+  },
+  "tests/problems/gr17.tsp": {
+    "kRandom": 2844.0,
+    "optimal": 2085
+  },
+  "tests/problems/gr21.tsp": {
+    "kRandom": 5241.0,
+    "optimal": 2707
+  },
+  "tests/problems/gr24.tsp": {
+    "kRandom": 2751.0,
+    "optimal": 1272
+  },
+  "tests/problems/gr48.tsp": {
+    "kRandom": 17369.0,
+    "optimal": 5046
+  },
+  "tests/problems/hk48.tsp": {
+    "kRandom": 36673.0,
+    "optimal": 11461
+  },
+  "tests/problems/kroA100.tsp": {
+    "kRandom": 163285.0,
+    "optimal": 21282
+  },
+  "tests/problems/kroA150.tsp": {
+    "kRandom": 232769.0,
+    "optimal": 26524
+  },
+  "tests/problems/kroA200.tsp": {
+    "kRandom": 326744.0,
+    "optimal": 29368
+  },
+  "tests/problems/kroB100.tsp": {
+    "kRandom": 157133.0,
+    "optimal": 22141
+  },
+  "tests/problems/kroB150.tsp": {
+    "kRandom": 240576.0,
+    "optimal": 26130
+  },
+  "tests/problems/kroB200.tsp": {
+    "kRandom": 315635.0,
+    "optimal": 29437
+  },
+  "tests/problems/kroC100.tsp": {
+    "kRandom": 154763.0,
+    "optimal": 20749
+  },
+  "tests/problems/kroD100.tsp": {
+    "kRandom": 152667.0,
+    "optimal": 21294
+  },
+  "tests/problems/kroE100.tsp": {
+    "kRandom": 160365.0,
+    "optimal": 22068
+  },
+  "tests/problems/lin105.tsp": {
+    "kRandom": 36446.0,
+    "optimal": 14379
+  },
+  "tests/problems/lin318.tsp": {
+    "kRandom": 119771.0,
+    "optimal": 42029
+  },
+  "tests/problems/linhp318.tsp": {
+    "kRandom": 119771.0,
+    "optimal": 41345
+  },
+  "tests/problems/p43.atsp": {
+    "kRandom": 6160.0,
+    "optimal": 5620
+  },
+  "tests/problems/p654.tsp": {
+    "kRandom": 107696.0,
+    "optimal": 34643
+  },
+  "tests/problems/pa561.tsp": {
+    "kRandom": 8952.0,
+    "optimal": 2763
+  },
+  "tests/problems/pcb442.tsp": {
+    "kRandom": 221399.0,
+    "optimal": 50778
+  },
+  "tests/problems/pr107.tsp": {
+    "kRandom": 62747.0,
+    "optimal": 44303
+  },
+  "tests/problems/pr124.tsp": {
+    "kRandom": 98926.0,
+    "optimal": 59030
+  },
+  "tests/problems/pr136.tsp": {
+    "kRandom": 287008.0,
+    "optimal": 96772
+  },
+  "tests/problems/pr144.tsp": {
+    "kRandom": 93502.0,
+    "optimal": 58537
+  },
+  "tests/problems/pr152.tsp": {
+    "kRandom": 160940.0,
+    "optimal": 73682
+  },
+  "tests/problems/pr226.tsp": {
+    "kRandom": 110394.0,
+    "optimal": 80369
+  },
+  "tests/problems/pr2392.tsp": {
+    "kRandom": 377553.0,
+    "optimal": 378032
+  },
+  "tests/problems/pr264.tsp": {
+    "kRandom": 77966.0,
+    "optimal": 49135
+  },
+  "tests/problems/pr299.tsp": {
+    "kRandom": 83436.0,
+    "optimal": 48191
+  },
+  "tests/problems/pr439.tsp": {
+    "kRandom": 270569.0,
+    "optimal": 107217
+  },
+  "tests/problems/pr76.tsp": {
+    "kRandom": 150757.0,
+    "optimal": 108159
+  },
+  "tests/problems/rat195.tsp": {
+    "kRandom": 3967.0,
+    "optimal": 2323
+  },
+  "tests/problems/rat575.tsp": {
+    "kRandom": 12730.0,
+    "optimal": 6773
+  },
+  "tests/problems/rat783.tsp": {
+    "kRandom": 72130.0,
+    "optimal": 8806
+  },
+  "tests/problems/rat99.tsp": {
+    "kRandom": 2093.0,
+    "optimal": 1211
+  },
+  "tests/problems/rbg323.atsp": {
+    "kRandom": 6023.0,
+    "optimal": 1326
+  },
+  "tests/problems/rbg358.atsp": {
+    "kRandom": 6710.0,
+    "optimal": 1163
+  },
+  "tests/problems/rbg403.atsp": {
+    "kRandom": 7546.0,
+    "optimal": 2465
+  },
+  "tests/problems/rbg443.atsp": {
+    "kRandom": 8032.0,
+    "optimal": 2720
+  },
+  "tests/problems/rd100.tsp": {
+    "kRandom": 50515.0,
+    "optimal": 7910
+  },
+  "tests/problems/rd400.tsp": {
+    "kRandom": 208532.0,
+    "optimal": 15281
+  },
+  "tests/problems/ry48p.atsp": {
+    "kRandom": 42141.0,
+    "optimal": 14422
+  },
+  "tests/problems/si175.tsp": {
+    "kRandom": 26361.0,
+    "optimal": 21407
+  },
+  "tests/problems/si535.tsp": {
+    "kRandom": 87882.0,
+    "optimal": 48450
+  },
+  "tests/problems/st70.tsp": {
+    "kRandom": 3091.0,
+    "optimal": 675
+  },
+  "tests/problems/swiss42.tsp": {
+    "kRandom": 2834.0,
+    "optimal": 1273
+  },
+  "tests/problems/ts225.tsp": {
+    "kRandom": 276519.0,
+    "optimal": 126643
+  },
+  "tests/problems/tsp225.tsp": {
+    "kRandom": 10294.0,
+    "optimal": 3916
+  },
+  "tests/problems/u159.tsp": {
+    "kRandom": 43338.0,
+    "optimal": 42080
+  },
+  "tests/problems/u574.tsp": {
+    "kRandom": 40032.0,
+    "optimal": 36905
+  },
+  "tests/problems/u724.tsp": {
+    "kRandom": 157168.0,
+    "optimal": 41910
+  }
+}

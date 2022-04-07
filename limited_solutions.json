@@ -1,0 +1,26 @@
+{
+  "tests/br17.atsp": {
+    "2Opt": 39.0,
+    "NN": 92,
+    "ExtNN": 56,
+    "2Opt-NN": 39,
+    "kRandom": 137.46,
+    "optimal": 39
+  },
+  "tests/brg180.tsp": {
+    "2Opt": 2030.0,
+    "NN": 12360,
+    "ExtNN": 8890,
+    "2Opt-NN": 1970,
+    "kRandom": 118860.0,
+    "optimal": 1950
+  },
+  "tests/ch130.tsp": {
+    "2Opt": 33628.0,
+    "NN": 7529,
+    "ExtNN": 7144,
+    "2Opt-NN": 6681,
+    "kRandom": 41983.52,
+    "optimal": 6110
+  }
+}
