@@ -4,6 +4,7 @@
 #include <cmath>
 
 #include "../util.h"
+#include "TSPInstance.h"
 #include "Euc2DInstance.h"
 #include "MatrixInstance.h"
 
@@ -12,7 +13,7 @@ const std::string unsuppoartedProblemMessage = "Unsuppoarted problem type";
 std::shared_ptr<TSPInstance> Parser::getInstance(const std::string& path) {
     std::ifstream file(path);
     if(file.is_open()) {
-        std::cout << "Opened file" << std::endl;
+        std::cerr << "Opened file" << std::endl;
         std::string line, name;
         std::shared_ptr<TSPInstance> instance;
         bool symetric, isDiagonal;
@@ -20,6 +21,7 @@ std::shared_ptr<TSPInstance> Parser::getInstance(const std::string& path) {
         MatrixInstance::MatrixType type = MatrixInstance::MatrixType::UNDEFINED;
 
         while (getline(file, line)){
+            if (line.size() < 2) continue;
             auto colon_index = line.find(':');
             std::string keyword = util::trimWhitespace(line.substr(0, colon_index));
             auto value = util::trimWhitespace(line.substr(colon_index + 1));
@@ -38,7 +40,7 @@ std::shared_ptr<TSPInstance> Parser::getInstance(const std::string& path) {
                 else if (format == "UPPER_ROW") type = MatrixInstance::MatrixType::UPPER_ROW;
                 else if (format == "LOWER_ROW") type = MatrixInstance::MatrixType::LOWER_ROW;
                 else if (format == "UPPER_DIAG_ROW") type = MatrixInstance::MatrixType::UPPER_DIAG_ROW;
-                else if (format == "LOWER_DIAG ROW") type = MatrixInstance::MatrixType::LOWER_DIAG_ROW;
+                else if (format == "LOWER_DIAG_ROW") type = MatrixInstance::MatrixType::LOWER_DIAG_ROW;
                 else if (format == "UPPER_COL") type = MatrixInstance::MatrixType::UPPER_COL;
                 else if (format == "LOWER_COL") type = MatrixInstance::MatrixType::LOWER_COL;
                 else if (format == "UPPER_DIAG_COL") type = MatrixInstance::MatrixType::UPPER_DIAG_COL;
@@ -53,7 +55,7 @@ std::shared_ptr<TSPInstance> Parser::getInstance(const std::string& path) {
                     int index;
                     double x, y;
                     file >> index;
-                    file >> x;
+                    file >> x;  
                     file >> y;
                     coords[i] = std::pair<int, int>(round(x), round(y));
                 }

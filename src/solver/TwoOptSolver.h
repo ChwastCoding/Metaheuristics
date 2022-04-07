@@ -27,7 +27,7 @@ public:
         RUNTIME
     };
 
-    TwoOptSolver(std::shared_ptr<TSPInstance> instance, Mode mode = LOOK_UP);
+    TwoOptSolver(std::shared_ptr<TSPInstance> instance, bool NN_mode = false, Mode mode = LOOK_UP);
     
     bool step() override;
     int calculateObjectiveFunction() override;

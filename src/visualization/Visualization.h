@@ -27,7 +27,7 @@ public:
     bool isOpen();
     void draw(int distance);
     void setSolution(const TSPInstance::solution& solution);
-    void setInstance(std::shared_ptr<Euc2DInstance> instance, int fieldSize);
+    void setInstance(std::shared_ptr<Euc2DInstance> instance);
 };
 
 #endif // __VISUALIZATION_H__

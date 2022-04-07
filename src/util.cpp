@@ -12,14 +12,14 @@ namespace util
         return copy.substr(0, i);
     }
     
-    char* getCmdOption(int argc, char** argv, const std::string& option)
+    std::string getCmdOption(int argc, char** argv, const std::string& option)
     {
         char** end = argc + argv;
         char** itr = std::find(argv, end, option);
         if (itr != end && ++itr != end) {
-            return *itr;
+            return std::string(*itr);
         }
-        return 0;
+        return "";
     }
     
     bool cmdOptionExists(int argc, char** argv, const std::string& option)

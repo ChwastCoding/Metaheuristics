@@ -3,10 +3,17 @@
 #include <algorithm>
 #include "../util.h"
 #include <iostream>
+#include "NearestNeighbour.h"
 
-TwoOptSolver::TwoOptSolver(std::shared_ptr<TSPInstance> instance, Mode mode_)
+TwoOptSolver::TwoOptSolver(std::shared_ptr<TSPInstance> instance, bool NN_mode, Mode mode_)
 : Solver(instance), mode(mode_) {
-    setupInitialSolution();
+    if (NN_mode) {
+        NearestNeighbour nn(instance, 0);
+        while (nn.step());
+        solution = nn.getSolution();
+    } else{
+        setupInitialSolution();
+    } 
     currentObjective = Solver::calculateObjectiveFunction(solution);
 
     size = solution.size();

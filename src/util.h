@@ -28,7 +28,7 @@ namespace util
 
     std::string trimWhitespace(const std::string& s);
 
-    char* getCmdOption(int argc, char** argv,  const std::string& option);
+std::string getCmdOption(int argc, char** argv,  const std::string& option);
 
     bool cmdOptionExists(int argc, char** argv, const std::string& option);
 

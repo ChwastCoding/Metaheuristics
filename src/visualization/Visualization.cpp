@@ -77,10 +77,17 @@ void Visualization::setSolution(const TSPInstance::solution& solution)
     this->solution = solution;
 }
 
-void Visualization::setInstance(std::shared_ptr<Euc2DInstance> instance, int fieldSize)
+void Visualization::setInstance(std::shared_ptr<Euc2DInstance> instance)
 {
     this->instance = instance;
     this->fieldSize = fieldSize;
+
+    auto nodes = instance->getCoords();
+    int maxX = std::max_element(nodes.begin(), nodes.end(), 
+        [](std::pair<int, int>a, std::pair<int, int>b) { return a.first < b.first;})->first;
+    int maxY = std::max_element(nodes.begin(), nodes.end(), 
+        [](std::pair<int, int>a, std::pair<int, int>b) { return a.second < b.second;})->second;
+    this->fieldSize = std::max(maxX, maxY);
 
     positions = std::vector<sf::Vector2f>(instance->getSize());
     for (int i = 0; i < instance->getSize(); i++)

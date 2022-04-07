@@ -15,6 +15,7 @@ public:
     
     void setCoords(const std::vector<std::pair<int, int >>& coords);
     std::pair<int, int> getCoords(const int& i) const;
+    std::vector<std::pair<int, int>>& getCoords();
 };
 
 #endif // __EUC2DINSTANCE_H__

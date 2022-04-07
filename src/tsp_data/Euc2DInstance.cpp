@@ -19,6 +19,11 @@ std::pair<int, int> Euc2DInstance::getCoords(const int& i) const
     return coords[i];
 }
 
+std::vector<std::pair<int, int>>& Euc2DInstance::getCoords()
+{
+    return coords;
+}
+
 std::ostream& Euc2DInstance::format(std::ostream& out) const 
 {
     out << "NAME : " << name << "\n";

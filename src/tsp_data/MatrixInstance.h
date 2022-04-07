@@ -28,7 +28,6 @@ public:
 
     void setMatrix(const std::vector<std::vector<int>>& matrix);
     void setType(MatrixType type);
-    void setIsSymetric(bool s);
 
     int getCost(const int& a, const int& b) override;
 private:
