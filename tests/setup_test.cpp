@@ -7,6 +7,10 @@
 #include "../src/solver/K_RandomSolver.h"
 #include "../src/solver/NearestNeighbour.h"
 #include "../src/solver/ExtNearestNeighbour.h"
+#include "../src/neighborhoods/Neighborhood.h"
+#include "../src/neighborhoods/TwoOptNeighborhood.h"
+#include "../src/solver/TabuSearch.h"
+#include "../src/solver/TwoOptSolver.h"
 
 typedef std::pair<int, int> intPair;
 const std::string pathToOriginalEuclidian = "../../tests/ch130.tsp";
@@ -130,6 +134,20 @@ TEST(ext_nearest_neighbour_solver, solve){
     for(int i = 0; i < extNearestNeighbour.getSolution().size(); i++){
         ASSERT_TRUE(std::find(extNearestNeighbour.getSolution().begin(), extNearestNeighbour.getSolution().end(), i) != extNearestNeighbour.getSolution().end());
     }
+}
+
+TEST(tabu_search, solve_2opt_neighborhood){
+    std::shared_ptr<TSPInstance> instance;
+    ASSERT_NO_THROW(instance = ProblemFactory::createEuc2DInstance(100,100));
+    K_RandomSolver kRandomSolver(instance, 2);
+    while(kRandomSolver.step());
+    TwoOptNeighborhood two_opt(instance);
+    std::shared_ptr<Neighborhood> n = std::make_shared<TwoOptNeighborhood>(two_opt);
+
+    TSPInstance::solution s(kRandomSolver.getSolution());
+    TabuSearch tabu(instance, s, n);
+    while(tabu.step());
+    ASSERT_TRUE(tabu.calculateObjectiveFunction() <= kRandomSolver.calculateObjectiveFunction());
 }
 
 int main(int argc, char** argv)

@@ -19,7 +19,7 @@ set (headers
     src/solver/NearestNeighbour.h
     src/solver/K_RandomSolver.h
     src/solver/ExtNearestNeighbour.h
-)
+        src/solver/TabuSearch.cpp src/solver/TabuSearch.h src/neighborhoods/TwoOptNeighborhood.cpp src/neighborhoods/TwoOptNeighborhood.h)
 
 set (sources
     src/util.cpp
@@ -36,7 +36,7 @@ set (sources
     src/solver/K_RandomSolver.cpp
     src/solver/NearestNeighbour.cpp
     src/solver/ExtNearestNeighbour.cpp
-)
+        src/solver/TabuSearch.cpp src/solver/TabuSearch.h src/neighborhoods/Neighborhood.cpp src/neighborhoods/Neighborhood.h src/neighborhoods/TwoOptNeighborhood.cpp src/neighborhoods/TwoOptNeighborhood.h)
 
 if(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
     find_package(SFML 2 COMPONENTS graphics window audio REQUIRED HINTS "${CMAKE_CURRENT_SOURCE_DIR}/lib_mingw/cmake/SFML")
@@ -44,7 +44,7 @@ elseif(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     find_package(SFML 2 COMPONENTS graphics window audio REQUIRED HINTS "${CMAKE_CURRENT_SOURCE_DIR}/lib_gcc/cmake/SFML")
 endif()
 
-add_executable(${PROJECT_NAME} ${headers} ${sources})
+add_executable(${PROJECT_NAME} ${headers} ${sources} src/neighborhoods/Neighborhood.cpp src/neighborhoods/Neighborhood.h)
 target_link_libraries(${PROJECT_NAME} sfml-graphics sfml-window sfml-audio)
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
