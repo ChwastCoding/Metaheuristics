@@ -22,7 +22,7 @@ class TabuSearch : public Solver{
 
 
         //tymczasowe elementy do warunku końca, mają być przeniesione do osobnej klasy
-        int k = 0, kmax=10;
+        int k = 0, kmax=100;
 
     public:
         TabuSearch(std::shared_ptr<TSPInstance> instance, TSPInstance::solution &s, std::shared_ptr<Neighborhood> n);

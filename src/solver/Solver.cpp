@@ -29,7 +29,7 @@ int Solver::calculateObjectiveFunction()
 }
 
 int
-Solver::calculateObjectiveFunction(const TSPInstance::solution &s, const std::shared_ptr<TSPInstance> instance1) {
+Solver::calculateObjectiveFunction(const TSPInstance::solution& s, const std::shared_ptr<TSPInstance>& instance1) {
     int sum = 0;
     for (int i = 1; i < s.size(); i++)
         sum += instance1->getCost(s[i - 1], s[i]);

@@ -1,12 +1,11 @@
-//
-// Created by atepl on 12.04.2022.
-//
 
 #include <algorithm>
-#include "TwoOptNeighborhood.h"
+#include "Invert.h"
 #include "../solver/Solver.h"
 
-std::vector<std::vector<int>> TwoOptNeighborhood::generateNeighborhood() {
+
+
+std::vector<std::vector<int>> Invert::generateNeighborhood() {
 
     if(instance->getIsSymetric()){
         std::vector<std::vector<int>> neighborhood;
@@ -33,30 +32,29 @@ std::vector<std::vector<int>> TwoOptNeighborhood::generateNeighborhood() {
     }
 }
 
-int TwoOptNeighborhood::getObjectiveFunction(TSPInstance::solution& newSolution, std::vector<int> move) {
-    if (newSolution != currsolution){
-        currsolution = TSPInstance::solution (newSolution);
-        size = currsolution.size();
-        currentObjective = Solver::calculateObjectiveFunction(currsolution, instance);
+int Invert::getObjectiveFunction(TSPInstance::solution& newSolution, std::vector<int> move) {
+    if (newSolution != currSolution){
+        currSolution = TSPInstance::solution (newSolution);
+        size = currSolution.size();
+        currentObjective = Solver::calculateObjectiveFunction(currSolution, instance);
     }
 
-    if(instance->getIsSymetric()){
+    if(instance->getIsSymetric() && !naive_mode){
         int res = currentObjective - runTimeCost(move[0] - 1, move[0]) - runTimeCost(move[1], move[1] + 1)
                   + runTimeCost(move[0] - 1, move[1]) + runTimeCost(move[0], move[1] + 1);
         return res;
     }
     else{
-        auto copy = TSPInstance::solution(currsolution);
+        auto copy = TSPInstance::solution(currSolution);
         if (move[0] < move[1]) std::reverse(copy.begin() + move[0], copy.begin() + move[1] + 1);
         else outerRotation(copy, move[0], move[1]);
 
         int res = Solver::calculateObjectiveFunction(copy, instance);
         return res;
     }
-
 }
 
-TSPInstance::solution TwoOptNeighborhood::getNewSolution(const TSPInstance::solution &solution,const std::vector<int>& move) {
+TSPInstance::solution Invert::getNewSolution(const TSPInstance::solution &solution, const std::vector<int>& move) {
     TSPInstance::solution s(solution);
     if(instance->getIsSymetric()){
         std::reverse(s.begin() + move[0], s.begin() + move[1] + 1);
@@ -69,15 +67,9 @@ TSPInstance::solution TwoOptNeighborhood::getNewSolution(const TSPInstance::solu
     return s;
 }
 
-TwoOptNeighborhood::TwoOptNeighborhood(std::shared_ptr<TSPInstance> instance) : Neighborhood(instance) {
-    this->size = instance->getSize();
-}
 
-int TwoOptNeighborhood::runTimeCost(int a, int b) {
-    return instance->getCost(currsolution[(size + a) % size], currsolution[(size + b) % size]);
-}
 
-void TwoOptNeighborhood::outerRotation(TSPInstance::solution& s, int a, int b)
+void Invert::outerRotation(TSPInstance::solution& s, int a, int b)
 {
     int c;
     do {
