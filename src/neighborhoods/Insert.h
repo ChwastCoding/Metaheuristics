@@ -5,12 +5,15 @@
 #include "Neighborhood.h"
 
 class Insert : public Neighborhood{
-
+protected:
+    void generateNeighborhood() override;
 public:
-    std::vector<std::vector<int>> generateNeighborhood() override;
-    int getObjectiveFunction(TSPInstance::solution& old, std::vector<int> move) override;
-    TSPInstance::solution getNewSolution(const TSPInstance::solution &old,const std::vector<int>& move) override;
-    inline Insert(std::shared_ptr<TSPInstance> instance, bool naive_mode = false) : Neighborhood(instance, naive_mode){};
+    int getObjectiveFunction(std::vector<int> move) override;
+    TSPInstance::solution getNewSolution(std::vector<int> move) override;
+    std::vector<std::vector<int>> getReverseMove(const std::vector<int>& move) override;
+    inline Insert(std::shared_ptr<TSPInstance> instance, bool naive_mode = false) : Neighborhood(instance, naive_mode){
+        generateNeighborhood();
+    };
 };
 
 

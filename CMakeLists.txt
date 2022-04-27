@@ -19,7 +19,7 @@ set (headers
     src/solver/NearestNeighbour.h
     src/solver/K_RandomSolver.h
     src/solver/ExtNearestNeighbour.h
-        src/solver/TabuSearch.cpp src/solver/TabuSearch.h src/neighborhoods/Invert.cpp src/neighborhoods/Invert.h src/neighborhoods/Swap.cpp src/neighborhoods/Swap.h src/neighborhoods/Insert.cpp src/neighborhoods/Insert.h)
+        src/solver/TabuSearch.cpp src/solver/TabuSearch.h src/neighborhoods/Invert.cpp src/neighborhoods/Invert.h src/neighborhoods/Swap.cpp src/neighborhoods/Swap.h src/neighborhoods/Insert.cpp src/neighborhoods/Insert.h src/solver/TS_long_term_mem.cpp src/solver/TS_long_term_mem.h)
 
 set (sources
     src/util.cpp
@@ -36,7 +36,7 @@ set (sources
     src/solver/K_RandomSolver.cpp
     src/solver/NearestNeighbour.cpp
     src/solver/ExtNearestNeighbour.cpp
-        src/solver/TabuSearch.cpp src/solver/TabuSearch.h src/neighborhoods/Neighborhood.cpp src/neighborhoods/Neighborhood.h src/neighborhoods/Invert.cpp src/neighborhoods/Invert.h src/neighborhoods/Swap.cpp src/neighborhoods/Swap.h src/neighborhoods/Insert.cpp src/neighborhoods/Insert.h)
+        src/solver/TabuSearch.cpp src/solver/TabuSearch.h src/neighborhoods/Neighborhood.cpp src/neighborhoods/Neighborhood.h src/neighborhoods/Invert.cpp src/neighborhoods/Invert.h src/neighborhoods/Swap.cpp src/neighborhoods/Swap.h src/neighborhoods/Insert.cpp src/neighborhoods/Insert.h src/solver/TS_long_term_mem.cpp src/solver/TS_long_term_mem.h)
 
 if(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
     find_package(SFML 2 COMPONENTS graphics window audio REQUIRED HINTS "${CMAKE_CURRENT_SOURCE_DIR}/lib_mingw/cmake/SFML")

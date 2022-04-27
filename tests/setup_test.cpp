@@ -13,6 +13,7 @@
 #include "../src/solver/TwoOptSolver.h"
 #include "../src/neighborhoods/Swap.h"
 #include "../src/neighborhoods/Insert.h"
+#include "../src/solver/TS_long_term_mem.h"
 
 typedef std::pair<int, int> intPair;
 const std::string pathToOriginalEuclidian = "../../tests/ch130.tsp";
@@ -138,23 +139,26 @@ TEST(ext_nearest_neighbour_solver, solve){
     }
 }
 
-TEST(tabu_search, solve_krandom_invert){
+TEST(tabu_search, solve_extNN_invert){
     std::shared_ptr<TSPInstance> instance;
-    ASSERT_NO_THROW(instance = ProblemFactory::createEuc2DInstance(100,100));
-    K_RandomSolver kRandomSolver(instance, 100);
-    while(kRandomSolver.step());
+    ASSERT_NO_THROW(instance = ProblemFactory::createEuc2DInstance(600, 100));
     Invert two_opt(instance);
     std::shared_ptr<Neighborhood> n = std::make_shared<Invert>(two_opt);
 
-    TSPInstance::solution s(kRandomSolver.getSolution());
+    NearestNeighbour nn(instance, 0);
+    while(nn.step());
+    TSPInstance::solution s(nn.getSolution());
     TabuSearch tabu(instance, s, n);
     while(tabu.step());
-    ASSERT_TRUE(tabu.calculateObjectiveFunction() <= kRandomSolver.calculateObjectiveFunction());
+    ASSERT_TRUE(tabu.calculateObjectiveFunction() <= nn.calculateObjectiveFunction());
+
+    TwoOptSolver two_opt_solver(instance,true);
+    while(two_opt_solver.step());
 }
 
 TEST(tabu_search, solve_twoopt_invert){
     std::shared_ptr<TSPInstance> instance;
-    ASSERT_NO_THROW(instance = ProblemFactory::createEuc2DInstance(100,100));
+    ASSERT_NO_THROW(instance = Parser::getInstance(pathToOriginalEuclidian));
     TwoOptSolver solver(instance);
     while(solver.step());
     Invert two_opt(instance);
@@ -166,33 +170,56 @@ TEST(tabu_search, solve_twoopt_invert){
     ASSERT_TRUE(tabu.calculateObjectiveFunction() <= solver.calculateObjectiveFunction());
 }
 
-TEST(neighborhood, swap){
+TEST(tabu_search, solve_longterm_twoopt_invert){
+    std::shared_ptr<TSPInstance> instance;
+    ASSERT_NO_THROW(instance = Parser::getInstance(pathToOriginalEuclidian));
+    TwoOptSolver solver(instance);
+    while(solver.step());
+    Invert two_opt(instance);
+    std::shared_ptr<Neighborhood> n = std::make_shared<Invert>(two_opt);
+
+    TSPInstance::solution s(solver.getSolution());
+    TS_long_term_mem tabu(instance, s, n);
+    while(tabu.step());
+    ASSERT_TRUE(tabu.calculateObjectiveFunction() <= solver.calculateObjectiveFunction());
+}
+
+TEST(neighborhood, swap) {
     std::shared_ptr<TSPInstance> instance;
     ASSERT_NO_THROW(instance = Parser::getInstance(pathToOriginalMatrix));
     TSPInstance::solution s(instance->getSize());
     std::iota(s.begin(), s.end(), 0);
     Swap swap(instance);
-
+    swap.setCurrSolution(s);
     //testowanie zwykłego ruchu
     std::vector<int> move(2);
     move[0] = 1, move[1] = 4;
-    int res = swap.getObjectiveFunction(s, move);
-    TSPInstance::solution newSolution = swap.getNewSolution(s, move);
+    int res = swap.getObjectiveFunction(move);
+    TSPInstance::solution newSolution = swap.getNewSolution(move);
     ASSERT_TRUE(newSolution[1] == 4 && newSolution[4] == 1);
     int res_with_objective_function = Solver::calculateObjectiveFunction(newSolution, instance);
     ASSERT_TRUE(res_with_objective_function == res);
+}
 
+TEST(neighborhood, swap_2){
+    std::shared_ptr<TSPInstance> instance;
+    ASSERT_NO_THROW(instance = Parser::getInstance(pathToOriginalMatrix));
+    TSPInstance::solution s(instance->getSize());
+    std::iota(s.begin(), s.end(), 0);
+    Swap swap(instance);
+    swap.setCurrSolution(s);
+    std::vector<int> move(2);
     //testowanie ruchu obok siebie wychodzącego poza zakres wektora
     move[0] = 0, move[1] = instance->getSize() - 1;
-    res = swap.getObjectiveFunction(s, move);
-    newSolution = swap.getNewSolution(s, move);
+    int res = swap.getObjectiveFunction(move);
+    TSPInstance::solution newSolution = swap.getNewSolution(move);
     ASSERT_TRUE(newSolution[0] == instance->getSize() - 1 && newSolution[instance->getSize() - 1] == 0);
-    res_with_objective_function = Solver::calculateObjectiveFunction(newSolution, instance);
+    int res_with_objective_function = Solver::calculateObjectiveFunction(newSolution, instance);
     ASSERT_TRUE(res_with_objective_function == res);
 
     move[1] = 1, move[0] = 2;
-    res = swap.getObjectiveFunction(s, move);
-    newSolution = swap.getNewSolution(s, move);
+    res = swap.getObjectiveFunction(move);
+    newSolution = swap.getNewSolution(move);
     ASSERT_TRUE(newSolution[1] == 2 && newSolution[2] == 1);
     res_with_objective_function = Solver::calculateObjectiveFunction(newSolution, instance);
     ASSERT_TRUE(res_with_objective_function == res);
@@ -204,55 +231,84 @@ TEST(neighborhood, invert){
     TSPInstance::solution s(instance->getSize());
     std::iota(s.begin(), s.end(), 0);
     Invert swap(instance);
+    swap.setCurrSolution(s);
     std::vector<int> move(2);
-    move[0] = 1, move[1] = 4;
-    int res = swap.getObjectiveFunction(s, move);
-    TSPInstance::solution newSolution = swap.getNewSolution(s, move);
+    move[0] = 4, move[1] = 1;
+    int res = swap.getObjectiveFunction(move);
+    TSPInstance::solution newSolution = swap.getNewSolution(move);
     int res_with_objective_function = Solver::calculateObjectiveFunction(newSolution, instance);
     ASSERT_TRUE(res_with_objective_function == res);
 }
 
-TEST(neighborhood, insert){
+TEST(neighborhood, insert) {
     std::shared_ptr<TSPInstance> instance;
     ASSERT_NO_THROW(instance = Parser::getInstance(pathToOriginalMatrix));
     TSPInstance::solution s(instance->getSize());
     std::iota(s.begin(), s.end(), 0);
     Insert insert(instance);
+    insert.setCurrSolution(s);
     std::vector<int> move(2);
 
     //testowanie zwykłego ruchu
     move[0] = 1, move[1] = 4;
-    int res = insert.getObjectiveFunction(s, move);
-    TSPInstance::solution newSolution = insert.getNewSolution(s, move);
+    int res = insert.getObjectiveFunction(move);
+    TSPInstance::solution newSolution = insert.getNewSolution(move);
     ASSERT_TRUE(newSolution[1] == 2 && newSolution[2] == 3 && newSolution[3] == 1);
     int res_with_objective_function = Solver::calculateObjectiveFunction(newSolution, instance);
     ASSERT_TRUE(res_with_objective_function == res);
+}
 
+TEST(neighborhood, insert_2) {
+    std::shared_ptr<TSPInstance> instance;
+    ASSERT_NO_THROW(instance = Parser::getInstance(pathToOriginalMatrix));
+    TSPInstance::solution s(instance->getSize());
+    std::iota(s.begin(), s.end(), 0);
+    Insert insert(instance);
+    insert.setCurrSolution(s);
+    std::vector<int> move(2);
     //testowanie ruchu na odwrót
     move[0] = 4, move[1] = 1;
-    res = insert.getObjectiveFunction(s, move);
-    newSolution = insert.getNewSolution(s, move);
+    int res = insert.getObjectiveFunction(move);
+    TSPInstance::solution newSolution = insert.getNewSolution(move);
     ASSERT_TRUE(newSolution[1] == 4 && newSolution[2] == 1 && newSolution[3] == 2 && newSolution[4] == 3);
-    res_with_objective_function = Solver::calculateObjectiveFunction(newSolution, instance);
+    int res_with_objective_function = Solver::calculateObjectiveFunction(newSolution, instance);
     ASSERT_TRUE(res_with_objective_function == res);
+}
+TEST(neighborhood, insert_3) {
+    std::shared_ptr<TSPInstance> instance;
+    ASSERT_NO_THROW(instance = Parser::getInstance(pathToOriginalMatrix));
+    TSPInstance::solution s(instance->getSize());
+    std::iota(s.begin(), s.end(), 0);
+    Insert insert(instance);
+    insert.setCurrSolution(s);
+    std::vector<int> move(2);
 
     //testowanie ruchu obok siebie
     move[0] = instance->getSize() - 1, move[1] = 0;
-    res = insert.getObjectiveFunction(s, move);
-    newSolution = insert.getNewSolution(s, move);
-    for(int i = 0; i < instance->getSize(); i++)
-        ASSERT_TRUE(newSolution[i] == s[(instance->getSize() + i-1) % instance->getSize()]);
-    res_with_objective_function = Solver::calculateObjectiveFunction(newSolution, instance);
+    int res = insert.getObjectiveFunction(move);
+    TSPInstance::solution newSolution = insert.getNewSolution(move);
+    for (int i = 0; i < instance->getSize(); i++)
+        ASSERT_TRUE(newSolution[i] == s[(instance->getSize() + i - 1) % instance->getSize()]);
+    int res_with_objective_function = Solver::calculateObjectiveFunction(newSolution, instance);
     ASSERT_TRUE(res_with_objective_function == res);
+
+}
+TEST(neighborhood, insert_4){
+    std::shared_ptr<TSPInstance> instance;
+    ASSERT_NO_THROW(instance = Parser::getInstance(pathToOriginalMatrix));
+    TSPInstance::solution s(instance->getSize());
+    std::iota(s.begin(), s.end(), 0);
+    Insert insert(instance);
+    insert.setCurrSolution(s);
+    std::vector<int> move(2);
 
     //testowanie ruchu obok siebie, który nie zmienia wektora
     move[0] = 2, move[1] = 2;
-    res = insert.getObjectiveFunction(s, move);
-    newSolution = insert.getNewSolution(s, move);
+    int res = insert.getObjectiveFunction(move);
+    TSPInstance::solution newSolution = insert.getNewSolution(move);
     ASSERT_TRUE(newSolution == s);
-    res_with_objective_function = Solver::calculateObjectiveFunction(newSolution, instance);
+    int res_with_objective_function = Solver::calculateObjectiveFunction(newSolution, instance);
     ASSERT_TRUE(res_with_objective_function == res);
-
 }
 
 int main(int argc, char** argv)

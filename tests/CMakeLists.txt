@@ -12,7 +12,7 @@ set(sources
     ../src/util.cpp
         ../src/solver/TwoOptSolver.cpp
         ../src/solver/K_RandomSolver.cpp ../src/solver/NearestNeighbour.cpp ../src/solver/ExtNearestNeighbour.cpp ../src/solver/Solver.cpp
-        ../src/solver/TabuSearch.cpp ../src/solver/TabuSearch.h ../src/neighborhoods/Neighborhood.cpp ../src/neighborhoods/Neighborhood.h ../src/neighborhoods/Invert.cpp ../src/neighborhoods/Invert.h ../src/neighborhoods/Swap.cpp ../src/neighborhoods/Swap.h ../src/neighborhoods/Insert.cpp ../src/neighborhoods/Insert.h)
+        ../src/solver/TabuSearch.cpp ../src/solver/TabuSearch.h ../src/neighborhoods/Neighborhood.cpp ../src/neighborhoods/Neighborhood.h ../src/neighborhoods/Invert.cpp ../src/neighborhoods/Invert.h ../src/neighborhoods/Swap.cpp ../src/neighborhoods/Swap.h ../src/neighborhoods/Insert.cpp ../src/neighborhoods/Insert.h ../src/solver/TS_long_term_mem.cpp ../src/solver/TS_long_term_mem.h)
 
 set(headers
      ../src/tsp_data/Euc2DInstance.h
@@ -25,7 +25,7 @@ set(headers
         ../src/solver/K_RandomSolver.h
         ../src/solver/ExtNearestNeighbour.h
         ../src/solver/Solver.h
-        ../src/solver/TabuSearch.cpp ../src/solver/TabuSearch.h ../src/neighborhoods/Neighborhood.cpp ../src/neighborhoods/Neighborhood.h ../src/neighborhoods/Invert.cpp ../src/neighborhoods/Invert.h ../src/neighborhoods/Swap.cpp ../src/neighborhoods/Swap.h ../src/neighborhoods/Insert.cpp ../src/neighborhoods/Insert.h)
+        ../src/solver/TabuSearch.cpp ../src/solver/TabuSearch.h ../src/neighborhoods/Neighborhood.cpp ../src/neighborhoods/Neighborhood.h ../src/neighborhoods/Invert.cpp ../src/neighborhoods/Invert.h ../src/neighborhoods/Swap.cpp ../src/neighborhoods/Swap.h ../src/neighborhoods/Insert.cpp ../src/neighborhoods/Insert.h ../src/solver/TS_long_term_mem.cpp ../src/solver/TS_long_term_mem.h)
 
 add_executable(${testname} ${sources} ${headers})
 target_link_libraries(${testname} PUBLIC gtest_main)
