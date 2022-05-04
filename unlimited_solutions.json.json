@@ -1,0 +1,506 @@
+{
+  "tests/problems/a280.tsp": {
+    "optimal": 2579,
+    "2Opt": 2729.0,
+    "NN": 3203,
+    "ExtNN": 2786,
+    "2Opt-NN": 2788,
+    "kRandom": 2786.0
+  },
+  "tests/problems/berlin52.tsp": {
+    "optimal": 7542,
+    "2Opt": 7949.0,
+    "NN": 8962,
+    "ExtNN": 8164,
+    "2Opt-NN": 8094,
+    "kRandom": 22186.0
+  },
+  "tests/problems/bier127.tsp": {
+    "optimal": 118282,
+    "2Opt": 121070.0,
+    "NN": 135713,
+    "ExtNN": 133936,
+    "2Opt-NN": 121718,
+    "kRandom": 393942.0
+  },
+  "tests/problems/brazil58.tsp": {
+    "optimal": 25395,
+    "2Opt": 26504.0,
+    "NN": 30774,
+    "ExtNN": 27384,
+    "2Opt-NN": 25932,
+    "kRandom": 100216.1
+  },
+  "tests/problems/brg180.tsp": {
+    "optimal": 1950,
+    "2Opt": 2030.0,
+    "NN": 12360,
+    "ExtNN": 8890,
+    "2Opt-NN": 1970,
+    "kRandom": 118860.0
+  },
+  "tests/problems/ch130.tsp": {
+    "optimal": 6110,
+    "2Opt": 6475.0,
+    "NN": 7529,
+    "ExtNN": 7144,
+    "2Opt-NN": 6681,
+    "kRandom": 41007.5
+  },
+  "tests/problems/ch150.tsp": {
+    "optimal": 6528,
+    "2Opt": 7021.0,
+    "NN": 8131,
+    "ExtNN": 7048,
+    "2Opt-NN": 6709,
+    "kRandom": 47470.3
+  },
+  "tests/problems/d198.tsp": {
+    "optimal": 15780,
+    "2Opt": 16562.0,
+    "NN": 18323,
+    "ExtNN": 17495,
+    "2Opt-NN": 16160,
+    "kRandom": 22499.0
+  },
+  "tests/problems/d493.tsp": {
+    "optimal": 35002,
+    "2Opt": 37650.0,
+    "NN": 42417,
+    "ExtNN": 40673,
+    "2Opt-NN": 36400,
+    "kRandom": 113478.0
+  },
+  "tests/problems/d657.tsp": {
+    "optimal": 48912,
+    "2Opt": 52620.0,
+    "NN": 60059,
+    "ExtNN": 58897,
+    "2Opt-NN": 52405,
+    "kRandom": 232016.0
+  },
+  "tests/problems/eil101.tsp": {
+    "optimal": 629,
+    "2Opt": 643.0,
+    "NN": 796,
+    "ExtNN": 750,
+    "2Opt-NN": 644,
+    "kRandom": 2031.0
+  },
+  "tests/problems/eil51.tsp": {
+    "optimal": 426,
+    "2Opt": 426.0,
+    "NN": 497,
+    "ExtNN": 489,
+    "2Opt-NN": 424,
+    "kRandom": 1294.0
+  },
+  "tests/problems/eil76.tsp": {
+    "optimal": 538,
+    "2Opt": 572.0,
+    "NN": 662,
+    "ExtNN": 598,
+    "2Opt-NN": 567,
+    "kRandom": 1951.0
+  },
+  "tests/problems/fl417.tsp": {
+    "optimal": 11861,
+    "2Opt": 12154.0,
+    "NN": 14636,
+    "ExtNN": 13510,
+    "2Opt-NN": 12612,
+    "kRandom": 55302.0
+  },
+  "tests/problems/fri26.tsp": {
+    "optimal": 937,
+    "2Opt": 527.0,
+    "NN": 631,
+    "ExtNN": 532,
+    "2Opt-NN": 530,
+    "kRandom": 1567.3
+  },
+  "tests/problems/gil262.tsp": {
+    "optimal": 2378,
+    "2Opt": 2512.0,
+    "NN": 3003,
+    "ExtNN": 2726,
+    "2Opt-NN": 2433,
+    "kRandom": 24223.9
+  },
+  "tests/problems/gr120.tsp": {
+    "optimal": 6942,
+    "2Opt": 5839.0,
+    "NN": 5581,
+    "ExtNN": 5263,
+    "2Opt-NN": 4925,
+    "kRandom": 43084.5
+  },
+  "tests/problems/gr17.tsp": {
+    "optimal": 2085,
+    "2Opt": 911.0,
+    "NN": 1633,
+    "ExtNN": 910,
+    "2Opt-NN": 769,
+    "kRandom": 2187.3
+  },
+  "tests/problems/gr21.tsp": {
+    "optimal": 2707,
+    "2Opt": 1758.0,
+    "NN": 2079,
+    "ExtNN": 1969,
+    "2Opt-NN": 1793,
+    "kRandom": 4312.9
+  },
+  "tests/problems/gr24.tsp": {
+    "optimal": 1272,
+    "2Opt": 694.0,
+    "NN": 1136,
+    "ExtNN": 681,
+    "2Opt-NN": 754,
+    "kRandom": 2106.6
+  },
+  "tests/problems/gr48.tsp": {
+    "optimal": 5046,
+    "2Opt": 2988.0,
+    "NN": 3314,
+    "ExtNN": 2892,
+    "2Opt-NN": 2579,
+    "kRandom": 15476.4
+  },
+  "tests/problems/hk48.tsp": {
+    "optimal": 11461,
+    "2Opt": 7404.0,
+    "NN": 10572,
+    "ExtNN": 8611,
+    "2Opt-NN": 7053,
+    "kRandom": 34327.4
+  },
+  "tests/problems/kroA100.tsp": {
+    "optimal": 21282,
+    "2Opt": 22519.0,
+    "NN": 27772,
+    "ExtNN": 24659,
+    "2Opt-NN": 22477,
+    "kRandom": 142390.4
+  },
+  "tests/problems/kroA150.tsp": {
+    "optimal": 26524,
+    "2Opt": 28252.0,
+    "NN": 34064,
+    "ExtNN": 30566,
+    "2Opt-NN": 28046,
+    "kRandom": 225791.2
+  },
+  "tests/problems/kroA200.tsp": {
+    "optimal": 29368,
+    "2Opt": 32005.0,
+    "NN": 35715,
+    "ExtNN": 35030,
+    "2Opt-NN": 30359,
+    "kRandom": 301961.2
+  },
+  "tests/problems/kroB100.tsp": {
+    "optimal": 22141,
+    "2Opt": 24118.0,
+    "NN": 29136,
+    "ExtNN": 25830,
+    "2Opt-NN": 22833,
+    "kRandom": 140102.5
+  },
+  "tests/problems/kroB150.tsp": {
+    "optimal": 26130,
+    "2Opt": 27011.0,
+    "NN": 32767,
+    "ExtNN": 31543,
+    "2Opt-NN": 27911,
+    "kRandom": 221343.2
+  },
+  "tests/problems/kroB200.tsp": {
+    "optimal": 29437,
+    "2Opt": 31822.0,
+    "NN": 36509,
+    "ExtNN": 34767,
+    "2Opt-NN": 31732,
+    "kRandom": 294999.1
+  },
+  "tests/problems/kroC100.tsp": {
+    "optimal": 20749,
+    "2Opt": 22110.0,
+    "NN": 26281,
+    "ExtNN": 23520,
+    "2Opt-NN": 21503,
+    "kRandom": 143453.9
+  },
+  "tests/problems/kroD100.tsp": {
+    "optimal": 21294,
+    "2Opt": 22687.0,
+    "NN": 26906,
+    "ExtNN": 24810,
+    "2Opt-NN": 22729,
+    "kRandom": 137134.9
+  },
+  "tests/problems/kroE100.tsp": {
+    "optimal": 22068,
+    "2Opt": 23321.0,
+    "NN": 27419,
+    "ExtNN": 24740,
+    "2Opt-NN": 23455,
+    "kRandom": 145028.8
+  },
+  "tests/problems/lin105.tsp": {
+    "optimal": 14379,
+    "2Opt": 15300.0,
+    "NN": 20341,
+    "ExtNN": 16914,
+    "2Opt-NN": 14547,
+    "kRandom": 36446.0
+  },
+  "tests/problems/lin318.tsp": {
+    "optimal": 42029,
+    "2Opt": 45903.0,
+    "NN": 53959,
+    "ExtNN": 49139,
+    "2Opt-NN": 45995,
+    "kRandom": 119771.0
+  },
+  "tests/problems/linhp318.tsp": {
+    "optimal": 41345,
+    "2Opt": 45903.0,
+    "NN": 53959,
+    "ExtNN": 49139,
+    "2Opt-NN": 45995,
+    "kRandom": 119771.0
+  },
+  "tests/problems/p654.tsp": {
+    "optimal": 34643,
+    "2Opt": 35587.0,
+    "NN": 43396,
+    "ExtNN": 42961,
+    "2Opt-NN": 35919,
+    "kRandom": 107696.0
+  },
+  "tests/problems/pa561.tsp": {
+    "optimal": 2763,
+    "2Opt": 3233.0,
+    "NN": 2568,
+    "ExtNN": 2407,
+    "2Opt-NN": 2293,
+    "kRandom": 8952.0
+  },
+  "tests/problems/pcb442.tsp": {
+    "optimal": 50778,
+    "2Opt": 54735.0,
+    "NN": 61926,
+    "ExtNN": 58896,
+    "2Opt-NN": 54226,
+    "kRandom": 221399.0
+  },
+  "tests/problems/pr107.tsp": {
+    "optimal": 44303,
+    "2Opt": 45502.0,
+    "NN": 46657,
+    "ExtNN": 46657,
+    "2Opt-NN": 44599,
+    "kRandom": 62747.0
+  },
+  "tests/problems/pr124.tsp": {
+    "optimal": 59030,
+    "2Opt": 60658.0,
+    "NN": 69282,
+    "ExtNN": 67039,
+    "2Opt-NN": 60287,
+    "kRandom": 98926.0
+  },
+  "tests/problems/pr136.tsp": {
+    "optimal": 96772,
+    "2Opt": 100494.0,
+    "NN": 120760,
+    "ExtNN": 114538,
+    "2Opt-NN": 105312,
+    "kRandom": 287008.0
+  },
+  "tests/problems/pr144.tsp": {
+    "optimal": 58537,
+    "2Opt": 59506.0,
+    "NN": 61633,
+    "ExtNN": 60946,
+    "2Opt-NN": 61228,
+    "kRandom": 93502.0
+  },
+  "tests/problems/pr152.tsp": {
+    "optimal": 73682,
+    "2Opt": 76199.0,
+    "NN": 85640,
+    "ExtNN": 79502,
+    "2Opt-NN": 75227,
+    "kRandom": 160940.0
+  },
+  "tests/problems/pr226.tsp": {
+    "optimal": 80369,
+    "2Opt": 85982.0,
+    "NN": 94672,
+    "ExtNN": 92540,
+    "2Opt-NN": 82158,
+    "kRandom": 110394.0
+  },
+  "tests/problems/pr2392.tsp": {
+    "optimal": 378032,
+    "2Opt": 377553.0,
+    "NN": 460671,
+    "ExtNN": 377553,
+    "2Opt-NN": 401158,
+    "kRandom": 377553.0
+  },
+  "tests/problems/pr264.tsp": {
+    "optimal": 49135,
+    "2Opt": 59571.0,
+    "NN": 58015,
+    "ExtNN": 54483,
+    "2Opt-NN": 52988,
+    "kRandom": 77966.0
+  },
+  "tests/problems/pr299.tsp": {
+    "optimal": 48191,
+    "2Opt": 52741.0,
+    "NN": 59833,
+    "ExtNN": 58222,
+    "2Opt-NN": 51907,
+    "kRandom": 83436.0
+  },
+  "tests/problems/pr439.tsp": {
+    "optimal": 107217,
+    "2Opt": 117951.0,
+    "NN": 131211,
+    "ExtNN": 127156,
+    "2Opt-NN": 117124,
+    "kRandom": 270569.0
+  },
+  "tests/problems/pr76.tsp": {
+    "optimal": 108159,
+    "2Opt": 112872.0,
+    "NN": 153442,
+    "ExtNN": 130903,
+    "2Opt-NN": 111820,
+    "kRandom": 150757.0
+  },
+  "tests/problems/rat195.tsp": {
+    "optimal": 2323,
+    "2Opt": 2411.0,
+    "NN": 2661,
+    "ExtNN": 2579,
+    "2Opt-NN": 2379,
+    "kRandom": 3967.0
+  },
+  "tests/problems/rat575.tsp": {
+    "optimal": 6773,
+    "2Opt": 7313.0,
+    "NN": 8431,
+    "ExtNN": 8038,
+    "2Opt-NN": 7139,
+    "kRandom": 12730.0
+  },
+  "tests/problems/rat783.tsp": {
+    "optimal": 8806,
+    "2Opt": 9515.0,
+    "NN": 10867,
+    "ExtNN": 10272,
+    "2Opt-NN": 9082,
+    "kRandom": 72130.0
+  },
+  "tests/problems/rat99.tsp": {
+    "optimal": 1211,
+    "2Opt": 1263.0,
+    "NN": 1530,
+    "ExtNN": 1443,
+    "2Opt-NN": 1300,
+    "kRandom": 2093.0
+  },
+  "tests/problems/rd100.tsp": {
+    "optimal": 7910,
+    "2Opt": 8687.0,
+    "NN": 9901,
+    "ExtNN": 9289,
+    "2Opt-NN": 8499,
+    "kRandom": 47485.5
+  },
+  "tests/problems/rd400.tsp": {
+    "optimal": 15281,
+    "2Opt": 16198.0,
+    "NN": 19544,
+    "ExtNN": 18367,
+    "2Opt-NN": 16273,
+    "kRandom": 197119.0
+  },
+  "tests/problems/si175.tsp": {
+    "optimal": 21407,
+    "2Opt": 21537.0,
+    "NN": 22263,
+    "ExtNN": 22000,
+    "2Opt-NN": 21602,
+    "kRandom": 26361.0
+  },
+  "tests/problems/si535.tsp": {
+    "optimal": 48450,
+    "2Opt": 48840.0,
+    "NN": 50144,
+    "ExtNN": 50036,
+    "2Opt-NN": 48843,
+    "kRandom": 87882.0
+  },
+  "tests/problems/st70.tsp": {
+    "optimal": 675,
+    "2Opt": 687.0,
+    "NN": 797,
+    "ExtNN": 787,
+    "2Opt-NN": 693,
+    "kRandom": 3052.6
+  },
+  "tests/problems/swiss42.tsp": {
+    "optimal": 1273,
+    "2Opt": 1387.0,
+    "NN": 1630,
+    "ExtNN": 1437,
+    "2Opt-NN": 1313,
+    "kRandom": 2834.0
+  },
+  "tests/problems/ts225.tsp": {
+    "optimal": 126643,
+    "2Opt": 135436.0,
+    "NN": 152493,
+    "ExtNN": 140484,
+    "2Opt-NN": 128552,
+    "kRandom": 276519.0
+  },
+  "tests/problems/tsp225.tsp": {
+    "optimal": 3916,
+    "2Opt": 4136.0,
+    "NN": 4705,
+    "ExtNN": 4455,
+    "2Opt-NN": 4111,
+    "kRandom": 10294.0
+  },
+  "tests/problems/u159.tsp": {
+    "optimal": 42080,
+    "2Opt": 42940.0,
+    "NN": 54637,
+    "ExtNN": 43338,
+    "2Opt-NN": 47431,
+    "kRandom": 43338.0
+  },
+  "tests/problems/u574.tsp": {
+    "optimal": 36905,
+    "2Opt": 39106.0,
+    "NN": 48879,
+    "ExtNN": 40032,
+    "2Opt-NN": 39120,
+    "kRandom": 40032.0
+  },
+  "tests/problems/u724.tsp": {
+    "optimal": 41910,
+    "2Opt": 45069.0,
+    "NN": 53141,
+    "ExtNN": 51260,
+    "2Opt-NN": 44863,
+    "kRandom": 157168.0
+  }
+}
