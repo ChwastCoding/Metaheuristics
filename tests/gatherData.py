@@ -63,12 +63,12 @@ if __name__ == "__main__":
     iterations = 1
     fileName = "iterations_{}_fast_problems_sizes_{}".format(iterations, instanceSize)
     data = gatherData(fileName+".json", iterations, k=1000, solvers_=solvers)
-    # dataNoLimits = gatherDataLimitMin(fileName + "_no_limit.json", iterations, solvers)
-    # stats = analize(solvers, data)
-    # statsNoLimit = analize(solvers, dataNoLimits)
-    # with open(fileName + "_stats.json", "w") as file:
-    #     file.write(json.dumps(stats, indent=2))
-    # with open(fileName + "_stats_no_limit.json", "w") as file:
-    #     file.write(json.dumps(statsNoLimit, indent=2))
-    # average("iterations_100_problems_sizes_100.json", solvers)
+    dataNoLimits = gatherDataLimitMin(fileName + "_no_limit.json", iterations, solvers)
+    stats = analize(solvers, data)
+    statsNoLimit = analize(solvers, dataNoLimits)
+    with open(fileName + "_stats.json", "w") as file:
+        file.write(json.dumps(stats, indent=2))
+    with open(fileName + "_stats_no_limit.json", "w") as file:
+        file.write(json.dumps(statsNoLimit, indent=2))
+    average("iterations_100_problems_sizes_100.json", solvers)
     

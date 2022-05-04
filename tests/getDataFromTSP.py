@@ -53,7 +53,7 @@ def solveForFiles(files, solvers, resfile, iterations, k, optimalSolutions=None,
 
         with open(resfile + "erros_avg.json", "w") as file:
             file.write(json.dumps(res_avg, indent=2))
-    
+
     with open(resfile + ".json", "w") as file:
         file.write(json.dumps(res, indent=2))
     return res
@@ -71,7 +71,7 @@ def solutionsToJSON(inFile, resFile):
 
 if __name__ == "__main__":
     files = getFilesList()
-    optimals = getSolutions("solutions.json")
-    res = solveForFiles(files, gatherData.solvers, "unlimited_solutions.json", 10, 1000, optimals)
+    # optimals = getSolutions("solutions.json")
+    # res = solveForFiles(files, gatherData.solvers, "unlimited_solutions.json", 10, 1000, optimals)
     # res = solveForFiles(files, gatherData.solvers, "limited_solutions.json", 10, 1000, optimals, True)
     
