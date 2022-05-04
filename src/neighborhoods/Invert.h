@@ -3,7 +3,7 @@
 #define METAHEURISITICS_INVERT_H
 
 #include "Neighborhood.h"
-
+#include "stdexcept"
 class Invert : public Neighborhood {
     private:
         void outerRotation(TSPInstance::solution& s, int a, int b);
