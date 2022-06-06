@@ -8,6 +8,10 @@
 #include "util.h"
 #include "visualization/Visualization.h"
 
+#include "experiments/testRandomTS.h"
+
+#include "solver/genetic/Genetic.h"
+
 std::shared_ptr<Solver> getSolver(std::shared_ptr<TSPInstance> instance,
                                   int argc,
                                   char** argv) {
@@ -59,12 +63,20 @@ std::shared_ptr<TSPInstance> getInstance(int argc, char** argv) {
 }
 
 int main(int argc, char** argv) {
-  if (util::cmdOptionExists(argc, argv, "--graphic")) {
+  if (false) {
+      // testAllNeighbourhoodsTime();
+      //testInvertTimeLT("invert_with_aspiration_time_lt_1000.csv", 1000);
+      //testSingleNeighbourhoodTime(1, "invert_with_aspiration_time_no_lt_1000.csv", 1000);
+  }
+  else if (true || util::cmdOptionExists(argc, argv, "--graphic")) {
     util::initializeRNG();
     // auto instance = std::dynamic_pointer_cast<Euc2DInstance>(
     //     Parser::getInstance("../tests/ch130.tsp"));
     auto instance = ProblemFactory::createEuc2DInstance(100, 300);
-    TwoOptSolver solver(instance);
+    //TwoOptSolver solver(instance);
+    Genetic solver(instance, Genetic::Operator::Order1, Genetic::InitialSolution::Random, 
+    Genetic::MutationType::TwoOptM, Genetic::SelectionMethod::RandomSelection, .3, 50,
+    30, 3, 10);
     Visualization vis;
     vis.setInstance(instance);
 

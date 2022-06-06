@@ -26,6 +26,10 @@ namespace util
         return random(0, range);
     }
 
+    inline float random() {
+      return static_cast<float>(std::rand()) / static_cast<float>(RAND_MAX);
+    }
+
     std::string trimWhitespace(const std::string& s);
 
 std::string getCmdOption(int argc, char** argv,  const std::string& option);

@@ -15,7 +15,7 @@ public:
 
     virtual bool step() = 0;
 
-    TSPInstance::solution getSolution();
+    virtual TSPInstance::solution getSolution();
     int calculateObjectiveFunction(const TSPInstance::solution& solution);
     virtual int calculateObjectiveFunction();
     static int calculateObjectiveFunction(const TSPInstance::solution& solution, const std::shared_ptr<TSPInstance>& instance);

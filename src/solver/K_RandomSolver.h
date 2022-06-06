@@ -17,9 +17,6 @@ class K_RandomSolver : public Solver{
         void setSolution(const TSPInstance::solution& solution);
         void setupInitialCurrSolution();
         K_RandomSolver(std::shared_ptr<TSPInstance> instance, int k);
-
-
-
 };
 
 #endif //METAHEURISITICS_K_RANDOMSOLVER_H

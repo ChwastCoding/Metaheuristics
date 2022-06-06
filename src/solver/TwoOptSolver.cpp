@@ -44,6 +44,12 @@ int TwoOptSolver::calculateObjectiveFunction()
     return currentObjective;
 }
 
+void TwoOptSolver::setSolution(TSPInstance::solution& s)
+{
+    solution = s;
+    currentObjective = Solver::calculateObjectiveFunction(solution, instance);
+}
+
 bool TwoOptSolver::symetricNaiveStep()
 {
     for (int i = 0; i < size; i++) {

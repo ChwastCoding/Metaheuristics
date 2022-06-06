@@ -7,6 +7,9 @@ add_subdirectory(googletest)
 
 set (headers
     src/util.h
+    src/solver/genetic/Mutation.h
+    src/solver/genetic/Crossover.h
+    src/solver/genetic/Genetic.h
     src/solver/Solver.h
     src/solver/DummySolver.h
     src/solver/TwoOptSolver.h
@@ -23,6 +26,9 @@ set (headers
 
 set (sources
     src/util.cpp
+    src/solver/genetic/Mutation.cpp
+    src/solver/genetic/Crossover.cpp
+    src/solver/genetic/Genetic.cpp
     src/solver/Solver.cpp
     src/solver/DummySolver.cpp
     src/solver/TwoOptSolver.cpp

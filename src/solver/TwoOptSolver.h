@@ -31,6 +31,9 @@ public:
     
     bool step() override;
     int calculateObjectiveFunction() override;
+
+    void setSolution(TSPInstance::solution& s); 
+
 private:
     Mode mode;
 };
